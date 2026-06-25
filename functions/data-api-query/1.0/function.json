@@ -1,0 +1,55 @@
+{
+  "description": "Run a GraphQL query against the data API",
+  "label": "Data API Query",
+  "category": "CRUD",
+  "icon": {
+    "name": "MagnifyingGlassIcon",
+    "color": "Blue"
+  },
+  "options": [
+    {
+      "meta": {
+        "type": "MultilineText",
+        "validations": { "required": true }
+      },
+      "configuration": {
+        "placeholder": "{ allTasks(where: { id: { eq: $id } }) { id name status } }"
+      },
+      "name": "query",
+      "label": "Query",
+      "info": "The GraphQL query body. Use $variable to reference values from the Variables field below."
+    },
+    {
+      "meta": {
+        "type": "Map"
+      },
+      "name": "variables",
+      "label": "Variables",
+      "info": "Optional key-value pairs passed as GraphQL variables."
+    },
+    {
+      "info": "The schema model can be used to type the output when you know the shape of the response.",
+      "meta": {
+        "type": "SchemaModel"
+      },
+      "name": "schemaModel",
+      "label": "Schema Model"
+    },
+    {
+      "name": "as",
+      "label": "Result as",
+      "meta": {
+        "type": "Output",
+        "validations": { "required": true },
+        "output": {
+          "anyOf": [
+            { "type": "Text" },
+            { "type": "Object", "schemaModel": "schemaModel" },
+            { "type": "Array", "schemaModel": "schemaModel", "dataType": "SCHEMA" }
+          ]
+        }
+      }
+    }
+  ],
+  "yields": "NONE"
+}

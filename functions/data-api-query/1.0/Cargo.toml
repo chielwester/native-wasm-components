@@ -1,0 +1,13 @@
+[package]
+name = "data-api-query"
+edition = "2021"
+version = "0.1.0"
+
+[workspace]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wit-bindgen = "0.46.0"
+serde_json = { version = "1", features = ["alloc"], default-features = false }
